@@ -23,17 +23,26 @@ namespace Portfolio.API.Controllers
             string api = $"https://www.instagram.com/api/v1/friendships/{id}/followers/?search_surface=follow_list_page&max_id={maxID}";
             var request = (HttpWebRequest)WebRequest.Create(api);
 
-            request.ContentType = "application/json";
+            request.Headers.Add("accept", " */*");
             request.Headers.Add("accept-encoding", " gzip, deflate, br");
-            request.Headers.Add("accept-language", " it-IT,it;q=0.6");
-            request.Headers.Add("sec-ch-ua", " \"Brave\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"");
+            request.Headers.Add("accept-language", " it");
+            request.Headers.Add("cache-control", " no-cache");
+            request.Headers.Add("pragma", " no-cache");
+            request.Headers.Add("sec-ch-prefers-color-scheme", " dark");
+            request.Headers.Add("sec-ch-ua", " \"Microsoft Edge\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"");
             request.Headers.Add("sec-ch-ua-mobile", " ?0");
             request.Headers.Add("sec-ch-ua-platform", " \"Windows\"");
             request.Headers.Add("sec-fetch-dest", " empty");
             request.Headers.Add("sec-fetch-mode", " cors");
             request.Headers.Add("sec-fetch-site", " same-origin");
-            request.Headers.Add("sec-gpc", " 1");
-            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36";
+            request.Headers.Add("user-agent", " Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.41");
+            request.Headers.Add("x-requested-with", " XMLHttpRequest");
+            request.Headers.Add("Cookie",
+               "csrftoken=A3hV4U1XCiDsgaKWiY6fAU2chwlA6heS; " +
+               "ds_user_id=4728937288; " +
+               "ig_did=FH3G4AND-GC9F-38J1-N29S-7892H2178I27; " +
+               "mid=SDAutAALAAF4HuY28pFsoGA2_yrD"
+           );
 
             request.Method = "GET";
             //request.CookieContainer = cookieContainer;
